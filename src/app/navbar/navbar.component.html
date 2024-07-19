@@ -1,0 +1,19 @@
+<p>
+    <mat-toolbar color="primary">
+     
+      <span>TGM</span>
+      <span class="example-spacer"></span>
+    
+<div class="navbar-links">
+      <a  routerLink="file" mat-button>File</a>
+      <a routerLink="edit" mat-button>Edit</a>
+      <a routerLink="view" mat-button>View</a>
+      <a routerLink="go" mat-button>Go</a>
+      <a routerLink="tools" mat-button>Tools</a>
+      <a routerLink="help" mat-button>Help</a>
+    </div>
+    <button mat-icon-button class="example-icon" aria-label="Fullscreen toggle button" (click)="toggleFullscreen()">
+        <mat-icon>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
