@@ -12,8 +12,9 @@
       <a routerLink="tools" mat-button>Tools</a>
       <a routerLink="help" mat-button>Help</a>
     </div>
-    <button mat-icon-button class="example-icon" aria-label="Fullscreen toggle button" (click)="toggleFullscreen()">
-        <mat-icon>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
-      </button>
+    <button mat-button class="example-icon" aria-label="Fullscreen toggle button" (click)="toggleFullscreen()" matTooltip="{{ isFullscreen ? 'Exit Fullscreen' : 'Fullscreen' }}">
+      <mat-icon>{{ isFullscreen ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+    </button>
+    
     </mat-toolbar>
   </p>

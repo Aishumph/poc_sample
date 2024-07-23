@@ -8,13 +8,17 @@ import { ContentComponent } from './content/content.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FileComponent } from './file/file.component';
 
-
+import {MatTableModule} from '@angular/material/table';
 // Material Modules
 import { MatIconModule  } from '@angular/material/icon';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import{ MatButtonModule} from '@angular/material/button';
 import{MatCardModule } from '@angular/material/card';
-// import{ } from '@angular/'
+import { MatTooltipModule } from '@angular/material/tooltip';
+import{ MatDialogModule} from '@angular/material/dialog';
+import { PopupComponent } from './popup/popup.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -23,7 +27,8 @@ import{MatCardModule } from '@angular/material/card';
     NavbarComponent,
     ContentComponent,
     SidenavComponent,
-    FileComponent
+   
+    PopupComponent
       ],
   imports: [
     BrowserModule,
@@ -33,6 +38,10 @@ import{MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatDialogModule,
+    MatSnackBarModule
    
   ],
   providers: [],
