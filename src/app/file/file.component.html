@@ -43,36 +43,67 @@
 </div>
 
 
-<!-- Dialog content -->
 
-  <!-- <div *ngIf="popupVisible" class="popup-overlay">
-    <div class="popup-content" cdkDrag cdkDragHandle>
-      <div class="popup-header" >
-        <p>Do you want to add a new row?</p>
-      </div>
-      <div class="popup-button">
-      <button mat-flat-button color="primary" (click)="addData()">Yes</button>
-      <button mat-flat-button  style="background: brown; color: white; "(click)="closePopup()">No</button>
-    </div>
-  </div>
-  </div> -->
+<!-- Old code -->
 
-  <!-- <div *ngIf="popupVisible" class="popup-overlay">
-    <div class="popup-content" cdkDrag mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event)">
-      <div class="popup-header" cdkDragHandle>
-        <p>Do you want to add a new row?</p>
-      </div>
-      <div class="popup-buttons">
-      <button mat-flat-button color="primary" (click)="addData()">Yes</button>
-      <button mat-flat-button  style="background: brown; color: white; " (click)="closePopup()">No</button>
-      <div mwlResizeHandle [resizeEdges]="{ bottom: true, right: true, bottomRight: true }" class="resize-handle"></div>
-    </div>
+<!-- Priya meet -->
+<!-- <ng-template #dialogTemplate>
+  <div cdkDrag class="dialog-container">
+    <h1 mat-dialog-title cdkDragHandle>
+      Confirmation
+      <button mat-icon-button (click)="onCancel()" class="close-button">
+        <mat-icon>close</mat-icon>
+      </button>
+    </h1>
+    <mat-dialog-content>
+      <p>Do you want to add a new row?</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-flat-button color="primary" (click)="onConfirm()">Yes</button>
+      <button mat-flat-button style="background: brown; color: white;" (click)="onCancel()">No</button>
+    </mat-dialog-actions>
   </div>
-</div> -->
+</ng-template> -->
+
+
+<!-- gppp -->
+<!-- <ng-template  #dialogTemplate>
+  <div  cdkDrag class="dialog-container">
+    <h1 mat-dialog-title cdkDragHandle>
+      Confirmation
+      <button mat-icon-button (click)="onCancel()" class="close-button">
+        <mat-icon>close</mat-icon>
+      </button>
+    </h1>
+    <mat-dialog-content>
+      <p>Do you want to add a new row?</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-flat-button color="primary" (click)="onConfirm()">Yes</button>
+      <button mat-flat-button style="background: brown; color: white;" (click)="onCancel()">No</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template> -->
+
+
+<!-- <ng-template #dialogTemplate>
+  <h1 mat-dialog-title>Confirmation</h1>
+  <mat-dialog-content>
+    <p>Do you want to add a new row?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onConfirm()">Yes</button>
+    <button mat-button (click)="onCancel()">No</button>
+  </mat-dialog-actions>
+</ng-template> -->
+
 <div *ngIf="popupVisible" class="popup-overlay">
   <div class="popup-content" cdkDrag mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event)">
     <div class="popup-header" cdkDragHandle>
       <h1>Confirmation</h1>
+      <button mat-icon-button (click)="onCancel()" class="close-button">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
     <div class="popup-body">
       <p>Do you want to add a new row?</p>
@@ -84,5 +115,16 @@
     <div mwlResizeHandle [resizeEdges]="{ bottom: true, right: true, bottomRight: true }" class="resize-handle"></div>
   </div>
 </div>
+
+
+<!-- New Code -->
+ <!-- <div *ngIf="popupVisible">
+ <h2 mat-dialog-title cdkDragHandle>Confirmation</h2>
+  <mat-dialog-content cdkDrag>Do you want to add a new row?</mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-flat-button color="primary">Yes</button>
+    <button mat-flat-button style="background: brown; color: white;" mat-dialog-close>No</button>
+  </mat-dialog-actions>
+</div> -->
 
 

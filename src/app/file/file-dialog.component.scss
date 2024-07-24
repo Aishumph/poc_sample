@@ -1,0 +1,15 @@
+
+  /* file-dialog.component.scss */
+.dialog-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dialog-title {
+    cursor: move;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  

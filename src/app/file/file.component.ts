@@ -1,12 +1,14 @@
-import { Component, ViewChild, Renderer2, ElementRef   } from '@angular/core';
+import { Component, ViewChild, Renderer2, ElementRef, ChangeDetectionStrategy, TemplateRef   } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import{ PopupComponent} from '../popup/popup.component';
 import {MatTable, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkDrag, DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule, ResizeEvent  } from 'angular-resizable-element';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+
 
 export interface AirlineData {
   Airlines: string;
@@ -30,7 +32,7 @@ const AIRLINES_DATA: AirlineData[] = [
   templateUrl: './file.component.html',
   styleUrls: ['./file.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, MatTableModule, CommonModule, DragDropModule, ResizableModule]
+  imports: [MatDialogModule, MatButtonModule, MatTableModule, CommonModule, DragDropModule, ResizableModule, MatIconModule, CdkDrag]
 })
 
 
@@ -42,20 +44,23 @@ export class FileComponent {
   popupWidth = 300;
   popupHeight = 200;
 
+
+  
 constructor( public dialog : MatDialog,
   private renderer: Renderer2,
    private el: ElementRef,
-   private snackBar: MatSnackBar
+   private snackBar: MatSnackBar,
 ){}
 
 
   @ViewChild(MatTable)
   table!: MatTable<AirlineData>;
+  @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
 addData() {
   const randomElementIndex = Math.floor(Math.random() * AIRLINES_DATA.length);
   this.dataSource.push(AIRLINES_DATA[randomElementIndex]);
   this.table.renderRows();
-  this.closePopup();
+ this.closePopup();
   this.showSnackBar('New row added successfully');
 }
 
@@ -64,14 +69,28 @@ removeData() {
   this.table.renderRows();
 }
 
-// openPopup():void{
-//   const PopupRef = this.dialog.open(PopupComponent,{
-//     width: '400px',
-//     position:{ top:'100px', left: 'calc(50% - 200px)'},
-//     panelClass: 'custom-dialog-container'
-//   })
+openDialog() {
+  const dialogRef = this.dialog.open(this.dialogTemplate, {
+    width: '400px',
+   
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.addData();
+    }
+  });
+}
+
+onConfirm() {
+  this.dialog.closeAll(); 
+}
+
+onCancel() {
+  this.dialog.closeAll(); 
+}
   
-// }
+
 showSnackBar(message: string) {
   this.snackBar.open(message, 'Close', {
     duration: 3000,
@@ -79,8 +98,11 @@ showSnackBar(message: string) {
     verticalPosition: 'top',
   });
 }
+
+
 openPopup(){
-  this.popupVisible = true;
+  this.popupVisible= true;
+ 
 }
 
 closePopup(){
@@ -99,4 +121,9 @@ updatePopupSize() {
 }
 
 
+
+
 }
+
+
+

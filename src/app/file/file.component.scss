@@ -8,6 +8,13 @@
     margin: 80px 0 0 60px;
     margin-left: 60rem;
   }
+  .draggable-dialog {
+    width: 400px; 
+    max-width: 100%;
+    height: auto;
+    overflow: hidden; 
+    position: relative;
+  }
   
   .demo-button + .demo-button {
     margin-left: 8px;
@@ -85,5 +92,39 @@
   
   .custom-snack-bar .mat-simple-snackbar-action {
     color: #673ab7;
+  }
+  
+
+  .dialog-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+  }
+  
+  mat-dialog-title {
+    cursor: move; 
+  }
+  
+  mat-dialog-actions {
+    margin-top: auto;
+  }
+  
+  .mat-dialog-content {
+    flex: 1;
+    overflow: auto;
+  }
+
+  .close-button {
+    position: absolute;
+    right: 16px;
+    top: 3px;
+  }
+  
+  .draggable-dialog .mat-dialog-container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    max-width: 80%;
+    max-height: 80%;
   }
   

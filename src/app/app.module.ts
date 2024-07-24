@@ -18,6 +18,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import{ MatDialogModule} from '@angular/material/dialog';
 import { PopupComponent } from './popup/popup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ResizableModule  } from 'angular-resizable-element';
+import { DraggableDialogComponent } from './draggable-dialog/draggable-dialog.component';
+// import { MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -28,7 +34,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ContentComponent,
     SidenavComponent,
    
-    PopupComponent
+    PopupComponent,
+         DraggableDialogComponent
       ],
   imports: [
     BrowserModule,
@@ -41,7 +48,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTooltipModule,
     MatTableModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CommonModule,
+    DragDropModule,
+    ResizableModule,
+   
+
+
    
   ],
   providers: [],
