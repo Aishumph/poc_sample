@@ -8,7 +8,6 @@ import { CdkDrag, DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule, ResizeEvent  } from 'angular-resizable-element';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-// import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
@@ -101,7 +100,7 @@ showLoaderAndAddData() {
   setTimeout(() => {
     this.addData();
     this.loading = false; 
-  }, 1000); 
+  }, 500); 
 }
 
 showSnackBar(message: string) {
