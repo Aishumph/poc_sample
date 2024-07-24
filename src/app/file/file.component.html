@@ -1,5 +1,5 @@
 <div class="demo-button-container">
-  <button mat-raised-button  color="primary" (click)="openPopup()" class="demo-button">
+  <button mat-raised-button  color="primary" (click)="openDialog()" class="demo-button">
     Add row
   </button>
   <button
@@ -67,9 +67,9 @@
 
 
 <!-- gppp -->
-<!-- <ng-template  #dialogTemplate>
-  <div  cdkDrag class="dialog-container">
-    <h1 mat-dialog-title cdkDragHandle>
+<ng-template  #dialogTemplate>
+  <div  cdkDrag  cdkDragRootElement=".cdk-dialog-container" class="dialog-container">
+    <h1 class="dialog-header" mat-dialog-title cdkDragHandle>
       Confirmation
       <button mat-icon-button (click)="onCancel()" class="close-button">
         <mat-icon>close</mat-icon>
@@ -78,12 +78,12 @@
     <mat-dialog-content>
       <p>Do you want to add a new row?</p>
     </mat-dialog-content>
-    <mat-dialog-actions>
+    <mat-dialog-actions class="popup-buttons">
       <button mat-flat-button color="primary" (click)="onConfirm()">Yes</button>
       <button mat-flat-button style="background: brown; color: white;" (click)="onCancel()">No</button>
     </mat-dialog-actions>
   </div>
-</ng-template> -->
+</ng-template>
 
 
 <!-- <ng-template #dialogTemplate>
@@ -97,7 +97,7 @@
   </mat-dialog-actions>
 </ng-template> -->
 
-<div *ngIf="popupVisible" class="popup-overlay">
+<!-- <div *ngIf="popupVisible" class="popup-overlay">
   <div class="popup-content" cdkDrag mwlResizable [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event)">
     <div class="popup-header" cdkDragHandle>
       <h1>Confirmation</h1>
@@ -114,7 +114,7 @@
     </div>
     <div mwlResizeHandle [resizeEdges]="{ bottom: true, right: true, bottomRight: true }" class="resize-handle"></div>
   </div>
-</div>
+</div> -->
 
 
 <!-- New Code -->

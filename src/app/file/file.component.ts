@@ -56,6 +56,7 @@ constructor( public dialog : MatDialog,
   @ViewChild(MatTable)
   table!: MatTable<AirlineData>;
   @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
+
 addData() {
   const randomElementIndex = Math.floor(Math.random() * AIRLINES_DATA.length);
   this.dataSource.push(AIRLINES_DATA[randomElementIndex]);
@@ -84,6 +85,8 @@ openDialog() {
 
 onConfirm() {
   this.dialog.closeAll(); 
+  this.addData();
+
 }
 
 onCancel() {
