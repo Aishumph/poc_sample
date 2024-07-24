@@ -8,6 +8,9 @@ import { CdkDrag, DragDropModule } from '@angular/cdk/drag-drop';
 import { ResizableModule, ResizeEvent  } from 'angular-resizable-element';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+// import { MatSpinner } from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 export interface AirlineData {
@@ -32,7 +35,7 @@ const AIRLINES_DATA: AirlineData[] = [
   templateUrl: './file.component.html',
   styleUrls: ['./file.component.scss'],
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule, MatTableModule, CommonModule, DragDropModule, ResizableModule, MatIconModule, CdkDrag]
+  imports: [MatDialogModule, MatButtonModule, MatTableModule, CommonModule, DragDropModule, ResizableModule, MatIconModule, CdkDrag, MatProgressSpinnerModule]
 })
 
 
@@ -43,7 +46,7 @@ export class FileComponent {
   popupVisible: boolean= false;
   popupWidth = 300;
   popupHeight = 200;
-
+  loading = false;
 
   
 constructor( public dialog : MatDialog,
@@ -78,14 +81,14 @@ openDialog() {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      this.addData();
+      this.showLoaderAndAddData();
     }
   });
 }
 
 onConfirm() {
   this.dialog.closeAll(); 
-  this.addData();
+  this.showLoaderAndAddData();
 
 }
 
@@ -93,6 +96,13 @@ onCancel() {
   this.dialog.closeAll(); 
 }
   
+showLoaderAndAddData() {
+  this.loading = true;
+  setTimeout(() => {
+    this.addData();
+    this.loading = false; 
+  }, 1000); 
+}
 
 showSnackBar(message: string) {
   this.snackBar.open(message, 'Close', {

@@ -85,7 +85,9 @@
   </div>
 </ng-template>
 
-
+<!-- loader -->
+<!-- <mat-spinner *ngIf="loading" class="loader"></mat-spinner> -->
+<mat-progress-spinner *ngIf="loading" class="loader" mode="indeterminate" diameter="50"></mat-progress-spinner>
 <!-- <ng-template #dialogTemplate>
   <h1 mat-dialog-title>Confirmation</h1>
   <mat-dialog-content>
