@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer2, ElementRef, ChangeDetectionStrategy, TemplateRef   } from '@angular/core';
+import { Component, ViewChild, Renderer2, ElementRef, ChangeDetectionStrategy, TemplateRef, HostListener   } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import{ PopupComponent} from '../popup/popup.component';
@@ -58,6 +58,16 @@ constructor( public dialog : MatDialog,
   @ViewChild(MatTable)
   table!: MatTable<AirlineData>;
   @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
+
+
+  @HostListener('window:keydown', ['$event'])
+handleKeyDown(event: KeyboardEvent) {
+  if (event.key === 'a' || event.key === 'A') {
+    event.preventDefault();  
+    this.openDialog();
+  }
+}
+
 
 addData() {
   const randomElementIndex = Math.floor(Math.random() * AIRLINES_DATA.length);
@@ -120,17 +130,17 @@ openPopup(){
 closePopup(){
   this.popupVisible= false;
 }
-onResizeEnd(event: ResizeEvent): void {
-  this.popupWidth = event.rectangle.width || this.popupWidth;
-  this.popupHeight = event.rectangle.height || this.popupHeight;
-  this.updatePopupSize();
-}
+// onResizeEnd(event: ResizeEvent): void {
+//   this.popupWidth = event.rectangle.width || this.popupWidth;
+//   this.popupHeight = event.rectangle.height || this.popupHeight;
+//   this.updatePopupSize();
+// }
 
-updatePopupSize() {
-  const popupContent = this.el.nativeElement.querySelector('.popup-content');
-  this.renderer.setStyle(popupContent, 'width', `${this.popupWidth}px`);
-  this.renderer.setStyle(popupContent, 'height', `${this.popupHeight}px`);
-}
+// updatePopupSize() {
+//   const popupContent = this.el.nativeElement.querySelector('.popup-content');
+//   this.renderer.setStyle(popupContent, 'width', `${this.popupWidth}px`);
+//   this.renderer.setStyle(popupContent, 'height', `${this.popupHeight}px`);
+// }
 
 
 
